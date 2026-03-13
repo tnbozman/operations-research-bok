@@ -20,6 +20,8 @@ Key technique areas include:
 | **Heuristics & Metaheuristics** | Approximate methods for large or intractable optimization problems |
 | **Stochastic Processes** | Modeling systems that evolve probabilistically over time |
 
+Explore each technique in depth — with lectures, code examples, and hands-on exercises — in the [**OR Techniques**](techniques/linear-programming/index.md) section. A reusable [**Prompt Template**](techniques/prompt-template.md) is provided to generate interactive learning content for any topic.
+
 ## Why Operations Research for Military Applications?
 
 Military operations involve some of the most complex decision-making environments imaginable: resource constraints, adversarial uncertainty, time pressure, and high stakes. OR techniques have been applied to military problems since World War II — ranging from convoy routing and logistics to force employment and campaign analysis.
