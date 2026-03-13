@@ -1,0 +1,386 @@
+name: Create Technique Learning Module Issues
+
+on:
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  create-issues:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Linear Programming issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh issue create \
+            --title "Implement Linear Programming Lecture & Hands-On Learning Module" \
+            --body "## Overview
+          Implement the complete lecture and hands-on learning module for **Linear Programming (LP)** as specified in \`docs/techniques/linear-programming/prompt.md\`.
+
+          ## Part 1 — Lecture (Conceptual Foundation)
+          - Plain-language and formal definition using standard LP notation (objective function, constraints, decision variables, feasible region)
+          - Mathematical formulation: standard form, canonical form, slack/surplus/artificial variables
+          - The Simplex algorithm — step-by-step walkthrough with geometric visualization
+          - Duality theory: primal-dual pairs, complementary slackness, shadow prices
+          - Software landscape: PuLP vs. Pyomo vs. SciPy vs. OR-Tools
+          - Limitations and failure modes: unbounded problems, infeasibility, degeneracy
+          - 'Check Your Understanding' (3 questions) after each part
+
+          ## Part 2 — Real-World Practical Examples
+
+          ### Example A — Military: Multi-Echelon Resource Allocation
+          - Allocate aviation assets across operational axes with fuel/crew/maintenance constraints
+          - Solve using PuLP with HiGHS solver; print and interpret dual/shadow prices
+          - Right-hand side sensitivity analysis
+
+          ### Example B — Civilian: Blending / Diet Problem
+          - Blend raw ingredients to meet nutritional requirements at minimum cost
+          - Solve with SciPy linprog; visualize feasible region with matplotlib
+          - Sensitivity analysis on ingredient cost
+
+          ## Part 3 — Interactive Exercises
+          1. **Guided (Warm-Up):** Transportation Problem with PuLP starter code and TODO blocks
+          2. **Exploratory:** Logistics Network What-If (3-warehouse / 5-customer distribution)
+          3. **Challenge:** Multi-Period Production Planning with parametric analysis; Pyomo/GLPK bonus
+
+          ## Toolbox
+          - Primary tools: PuLP, SciPy (linprog/HiGHS), Pyomo, NumPy, matplotlib
+          - Output format: MkDocs-compatible Markdown with admonitions, fenced code blocks, KaTeX math
+          - All code must run with Python 3.10+ and only open-source packages"
+
+      - name: Create Integer Programming issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh issue create \
+            --title "Implement Integer Programming Lecture & Hands-On Learning Module" \
+            --body "## Overview
+          Implement the complete lecture and hands-on learning module for **Integer Programming (IP) and Mixed-Integer Programming (MIP)** as specified in \`docs/techniques/integer-programming/prompt.md\`.
+
+          ## Part 1 — Lecture (Conceptual Foundation)
+          - Formal definition distinguishing Pure IP, MIP, and Binary (0-1) IP
+          - The LP relaxation and its role; why optimal LP ≠ rounded IP
+          - Branch and Bound: visual tree diagram, bounding, pruning rules
+          - Cutting planes: Gomory cuts, cover inequalities
+          - Branch and Cut: how modern solvers (CBC, HiGHS, SCIP) combine both
+          - Modeling tricks: big-M formulation, SOS constraints, linearizing products of binary variables
+          - Computational complexity: NP-hardness, practical instance size limits
+          - 'Check Your Understanding' (3 questions) after each part
+
+          ## Part 2 — Real-World Practical Examples
+
+          ### Example A — Military: Multi-Asset Weapon-Target Assignment (WTA)
+          - Assign 8 weapon systems to 6 high-value targets; maximize expected kills
+          - Formulate as binary IP; solve with PuLP + CBC
+          - Visualize assignment matrix as heatmap
+
+          ### Example B — Civilian: Capacitated Facility Location
+          - Select distribution centers and assign customers subject to capacity
+          - Solve with OR-Tools CP-SAT; visualize open facilities and assignments
+          - Sensitivity analysis on number of open facilities vs. fixed cost
+
+          ## Part 3 — Interactive Exercises
+          1. **Guided (Warm-Up):** 0-1 Knapsack with PuLP starter code and TODO blocks
+          2. **Exploratory:** Crew Shift Scheduling for a forward operating base
+          3. **Challenge:** Vehicle Routing Problem (VRP) with 3 vehicles, 15 locations
+
+          ## Toolbox
+          - Primary tools: PuLP (CBC), OR-Tools (CP-SAT, routing), Pyomo, matplotlib, seaborn
+          - Output format: MkDocs-compatible Markdown with admonitions, fenced code blocks, KaTeX math
+          - All code must run with Python 3.10+ and only open-source packages"
+
+      - name: Create Network Analysis issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh issue create \
+            --title "Implement Network Analysis Lecture & Hands-On Learning Module" \
+            --body "## Overview
+          Implement the complete lecture and hands-on learning module for **Network Analysis** (graph theory, network flows, routing, and connectivity) as specified in \`docs/techniques/network-analysis/prompt.md\`.
+
+          ## Part 1 — Lecture (Conceptual Foundation)
+          - Graph vocabulary: nodes, edges, weights, capacities, paths, cycles, trees
+          - Graph representations: adjacency matrix, adjacency list, edge list
+          - Fundamental algorithms: Dijkstra, Bellman-Ford, Floyd-Warshall, Ford-Fulkerson, Edmonds-Karp, Kruskal, Prim, Network Simplex
+          - Max-Flow Min-Cut theorem: intuitive proof and operational significance
+          - Assignment problem as a network flow: the Hungarian algorithm
+          - Network resilience: articulation points, bridges, k-connectivity
+          - 'Check Your Understanding' (3 questions) after each part
+
+          ## Part 2 — Real-World Practical Examples
+
+          ### Example A — Military: Logistics Supply Network with Interdiction
+          - 20-node road network; find shortest path, minimum cut, most resilient route
+          - Build with NetworkX; visualize with highlighted paths and min-cut edges
+          - Quantify resilience gap under adversarial interdiction
+
+          ### Example B — Civilian: Urban Traffic Flow Optimization
+          - 25-intersection network; find maximum flow and bottleneck intersections
+          - Heatmap of flow utilization per edge
+          - Identify top 2 edges to expand for maximum throughput gain
+
+          ## Part 3 — Interactive Exercises
+          1. **Guided (Warm-Up):** Minimum Spanning Tree with NetworkX starter code
+          2. **Exploratory:** All-Pairs Shortest Paths and Centrality on 15-node command network
+          3. **Challenge:** Network Resilience Simulator with Monte Carlo edge failures
+
+          ## Toolbox
+          - Primary tools: NetworkX, matplotlib, plotly
+          - Output format: MkDocs-compatible Markdown with admonitions, fenced code blocks, KaTeX math
+          - All code must run with Python 3.10+ and only open-source packages"
+
+      - name: Create Decision Analysis issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh issue create \
+            --title "Implement Decision Analysis Lecture & Hands-On Learning Module" \
+            --body "## Overview
+          Implement the complete lecture and hands-on learning module for **Decision Analysis** as specified in \`docs/techniques/decision-analysis/prompt.md\`.
+
+          ## Part 1 — Lecture (Conceptual Foundation)
+          - The decision analysis cycle: frame → model → solve → interpret → iterate
+          - Payoff matrices and decision criteria: EMV, Maximin, Maximax, Minimax Regret, Hurwicz
+          - Decision trees: nodes, backward induction (fold-back), sequential decisions
+          - EVPI: derivation and operational interpretation
+          - EVSI: Bayesian updating with imperfect information sources
+          - Utility theory: risk-neutral, risk-averse, risk-seeking utility functions
+          - Multi-Attribute Utility Theory (MAUT)
+          - Sensitivity analysis: one-way, two-way, and tornado diagrams
+          - 'Check Your Understanding' (3 questions) after each part
+
+          ## Part 2 — Real-World Practical Examples
+
+          ### Example A — Military: Intelligence-Driven Strike Decision
+          - 3-stage decision tree: Strike, Conduct ISR, or Hold
+          - Compute EVPI and EVSI; determine if ISR sortie is worth the cost
+          - One-way sensitivity on P(enemy present) with flip threshold
+
+          ### Example B — Civilian: Pharmaceutical Drug Development Decision
+          - Sequential decision tree for Phase II/III trials vs. licensing
+          - Apply risk-averse utility function (exponential utility)
+          - Compare EMV-optimal vs. utility-optimal decisions; tornado diagram
+
+          ## Part 3 — Interactive Exercises
+          1. **Guided (Warm-Up):** Payoff Matrix Analysis (3×4) with Python skeleton
+          2. **Exploratory:** COA Analysis with sensitivity sweep on enemy COA probabilities
+          3. **Challenge:** Full Multi-Stage Decision Tree with Bayesian Updating and MAUT
+
+          ## Toolbox
+          - Primary tools: Python (NumPy, matplotlib), graphviz (python-graphviz), optionally pymc
+          - Output format: MkDocs-compatible Markdown with admonitions, fenced code blocks, KaTeX math
+          - All code must run with Python 3.10+ and only open-source packages"
+
+      - name: Create Simulation issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh issue create \
+            --title "Implement Simulation Lecture & Hands-On Learning Module" \
+            --body "## Overview
+          Implement the complete lecture and hands-on learning module for **Simulation** (Discrete-Event Simulation and Monte Carlo methods) as specified in \`docs/techniques/simulation/prompt.md\`.
+
+          ## Part 1 — Lecture (Conceptual Foundation)
+          - When to simulate vs. use analytical models
+          - Taxonomy: Discrete-Event Simulation (DES), Monte Carlo, Agent-Based Modeling, System Dynamics
+          - Random variate generation: inverse CDF transform, acceptance-rejection; Uniform, Exponential, Normal, Triangular, Poisson in Python/NumPy
+          - Output analysis: warm-up period, replication-deletion method, batch means, confidence intervals
+          - Variance reduction techniques: common random numbers, antithetic variates, control variates
+          - Verification vs. Validation
+          - 'Check Your Understanding' (3 questions) after each part
+
+          ## Part 2 — Real-World Practical Examples
+
+          ### Example A — Military: Airfield Sortie Generation Simulation
+          - 2 runways, 20 aircraft, stochastic maintenance, weather disruptions, 30-day campaign
+          - Build with SimPy; run 20 replications; 95% CI on mean daily sortie rate
+          - Identify binding constraint (runway, maintenance, or weather)
+
+          ### Example B — Civilian: Supply Chain Risk via Monte Carlo
+          - 5-stage supply chain with uncertain lead times and disruption probability
+          - 100,000 trials with NumPy; histogram with risk thresholds; tornado chart
+          - Demonstrate variance reduction using common random numbers
+
+          ## Part 3 — Interactive Exercises
+          1. **Guided (Warm-Up):** M/M/1 Queue via SimPy with TODO blocks
+          2. **Exploratory:** Monte Carlo Pi Estimation with convergence analysis and antithetic variates
+          3. **Challenge:** Combat Casualty Simulation with priority MEDEVAC queue (50 replications, plotly)
+
+          ## Toolbox
+          - Primary tools: SimPy, NumPy, SciPy, matplotlib, plotly
+          - Output format: MkDocs-compatible Markdown with admonitions, fenced code blocks, KaTeX math
+          - All code must run with Python 3.10+ and only open-source packages"
+
+      - name: Create Queueing Theory issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh issue create \
+            --title "Implement Queueing Theory Lecture & Hands-On Learning Module" \
+            --body "## Overview
+          Implement the complete lecture and hands-on learning module for **Queueing Theory** as specified in \`docs/techniques/queueing-theory/prompt.md\`.
+
+          ## Part 1 — Lecture (Conceptual Foundation)
+          - Queueing system anatomy: arrival process, service mechanism, queue discipline, capacity, calling population
+          - Kendall's A/S/c/K/N/D notation with concrete examples (M/M/1, M/M/c, M/D/1, G/G/1)
+          - Poisson arrivals and exponential service; birth-death chain formulation
+          - Core M/M/1 results: derive L, Lq, W, Wq; non-linear blow-up as ρ → 1
+          - M/M/c model: Erlang-C formula, P0, expected wait, server utilization
+          - Little's Law: statement, intuitive proof, 3 applications
+          - Priority queues: preemptive vs. non-preemptive; 2-priority M/M/1 formula
+          - Jackson networks: product-form solution
+          - 'Check Your Understanding' (3 questions) after each part
+
+          ## Part 2 — Real-World Practical Examples
+
+          ### Example A — Military: Field Hospital Capacity Planning
+          - Poisson casualty arrivals varying by operational phase (low: 5/hr, high: 18/hr)
+          - M/M/2 steady-state metrics; minimum surgeons to keep wait < 20 minutes
+          - Plot mean wait time vs. number of surgeons
+
+          ### Example B — Civilian: Airport Security Lane Optimization
+          - M/M/c model; cost model with lane cost + cost of waiting
+          - Plot total cost vs. number of lanes; identify optimum
+          - Show how optimum shifts with 30% increase in arrival rate
+
+          ## Part 3 — Interactive Exercises
+          1. **Guided (Warm-Up):** M/M/1 Metrics Calculator with Python skeleton and TODO blocks
+          2. **Exploratory:** Analytical vs. Simulation Validation (sweep λ from 0.1μ to 0.95μ)
+          3. **Challenge:** Multi-Class Priority MEDEVAC Queue (3 priority classes, SimPy validation)
+
+          ## Toolbox
+          - Primary tools: Python math/statistics stdlib, NumPy, SimPy, matplotlib
+          - Output format: MkDocs-compatible Markdown with admonitions, fenced code blocks, KaTeX math
+          - All code must run with Python 3.10+ and only open-source packages"
+
+      - name: Create Stochastic Processes issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh issue create \
+            --title "Implement Stochastic Processes Lecture & Hands-On Learning Module" \
+            --body "## Overview
+          Implement the complete lecture and hands-on learning module for **Stochastic Processes** as specified in \`docs/techniques/stochastic-processes/prompt.md\`.
+
+          ## Part 1 — Lecture (Conceptual Foundation)
+          - What is a stochastic process: random variables indexed by time, state space taxonomy
+          - The Markov property: formal definition and real-world applicability
+          - Discrete-Time Markov Chains (DTMC): transition matrix, Chapman-Kolmogorov, state classification, steady-state, first passage times, absorbing chains
+          - Continuous-Time Markov Chains (CTMC): generator matrix, Kolmogorov equations, steady-state, connection to Queueing Theory
+          - Poisson Processes: inter-arrival distribution, superposition, thinning, compound Poisson
+          - Markov Decision Processes (MDP): Bellman equations, Value Iteration, Policy Iteration
+          - Hidden Markov Models (HMM): Viterbi algorithm, military relevance
+          - 'Check Your Understanding' (3 questions) after each part
+
+          ## Part 2 — Real-World Practical Examples
+
+          ### Example A — Military: Fleet Readiness Markov Chain & Maintenance Policy MDP
+          - DTMC: 50-vehicle fleet across FMC/PMC/NMC/Under-Maintenance states; steady-state + 365-day simulation
+          - MDP: optimal maintenance dispatch policy via Value Iteration; decision heatmap
+
+          ### Example B — Civilian: Customer Lifecycle Churn MDP
+          - Customers in Active/At-Risk/Churned states; interventions at different costs
+          - Policy Iteration; compare no-intervention vs. optimal vs. always-intervene
+
+          ## Part 3 — Interactive Exercises
+          1. **Guided (Warm-Up):** DTMC Simulator and Steady-State Validation (4-state, 10,000 steps)
+          2. **Exploratory:** Poisson Process Analysis (MLE estimation, KS test, stability check)
+          3. **Challenge:** Stochastic Combat Attrition with Lanchester Laws (200 replicates, P(Blue wins) analysis)
+
+          ## Toolbox
+          - Primary tools: NumPy, SciPy, matplotlib, pandas
+          - Output format: MkDocs-compatible Markdown with admonitions, fenced code blocks, KaTeX math
+          - All code must run with Python 3.10+ and only open-source packages"
+
+      - name: Create Heuristics and Metaheuristics issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh issue create \
+            --title "Implement Heuristics & Metaheuristics Lecture & Hands-On Learning Module" \
+            --body "## Overview
+          Implement the complete lecture and hands-on learning module for **Heuristics and Metaheuristics** as specified in \`docs/techniques/heuristics-metaheuristics/prompt.md\`.
+
+          ## Part 1 — Lecture (Conceptual Foundation)
+          - Why exact methods fail on large instances: NP-hardness and exponential scaling
+          - Heuristic vs. metaheuristic; constructive heuristics (greedy nearest-neighbor, greedy knapsack)
+          - Local search: neighbourhood structures (2-opt, 3-opt, Or-opt), hill climbing, local optima trap
+          - Simulated Annealing (SA): Metropolis criterion, cooling schedules, convergence theory
+          - Tabu Search: short-term memory, aspiration criteria, long-term memory
+          - Genetic Algorithms (GA): representation, fitness, selection, crossover, mutation, elitism
+          - Particle Swarm Optimization (PSO): particle positions/velocities, personal/global best
+          - Ant Colony Optimization (ACO): pheromone deposition/evaporation, AS vs. ACS
+          - No Free Lunch theorem; benchmarking and statistical comparison
+          - 'Check Your Understanding' (3 questions) after each part
+
+          ## Part 2 — Real-World Practical Examples
+
+          ### Example A — Military: UAV Waypoint Tour Optimization (TSP)
+          - 30-waypoint reconnaissance tour; compare Nearest-Neighbour+2-opt vs. GA (DEAP) vs. SA
+          - Plot routes and convergence curves; solution quality vs. computation time table
+
+          ### Example B — Civilian: Hospital Staff Scheduling
+          - 20 nurses, 7-day, 3-shift rota with availability constraints
+          - Tabu Search from scratch vs. GA (DEAP); colour-coded heatmap schedule
+
+          ## Part 3 — Interactive Exercises
+          1. **Guided (Warm-Up):** 2-opt TSP Local Search on 20-city random instance
+          2. **Exploratory:** Simulated Annealing Parameter Tuning (3×3 grid, 50-city TSP)
+          3. **Challenge:** Multi-Objective Sensor Placement using NSGA-II (DEAP); Pareto front visualization
+
+          ## Toolbox
+          - Primary tools: DEAP (GA, PSO, NSGA-II), NumPy, matplotlib
+          - Output format: MkDocs-compatible Markdown with admonitions, fenced code blocks, KaTeX math
+          - All code must run with Python 3.10+ and only open-source packages"
+
+      - name: Create Game Theory issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh issue create \
+            --title "Implement Game Theory Lecture & Hands-On Learning Module" \
+            --body "## Overview
+          Implement the complete lecture and hands-on learning module for **Game Theory** as specified in \`docs/techniques/game-theory/prompt.md\`.
+
+          ## Part 1 — Lecture (Conceptual Foundation)
+          - What makes a situation a 'game': players, strategies, payoffs, information, timing
+          - Normal form vs. extensive form; dominant strategies and IESDS
+          - Nash Equilibrium: formal definition, existence theorem, uniqueness vs. multiplicity
+          - Zero-sum games: minimax theorem, saddle points, mixed strategies via LP
+          - Non-zero-sum games: Prisoner's Dilemma, Pareto efficiency, coordination games
+          - Repeated games: Folk theorem, Tit-for-Tat
+          - Stackelberg games: leader-follower structure, first-mover advantage
+          - Auctions as games: sealed-bid, Vickrey auction dominant strategies
+          - 'Check Your Understanding' (3 questions) after each part
+
+          ## Part 2 — Real-World Practical Examples
+
+          ### Example A — Military: Colonel Blotto Force Allocation Game
+          - Two commanders allocate 120 units across 5 battlefields simultaneously
+          - Monte Carlo enumeration; Nash equilibrium via replicator dynamics
+          - Heatmap of win rates for different allocation splits
+
+          ### Example B — Civilian: Competitive Pricing Stackelberg Game
+          - Market leader sets price first; compute Stackelberg vs. Nash vs. cooperative equilibria
+          - Solve analytically with SymPy; plot reaction functions and compare profits
+
+          ## Part 3 — Interactive Exercises
+          1. **Guided (Warm-Up):** Nash Equilibrium Finder (pure-strategy NE detection function)
+          2. **Exploratory:** Repeated Prisoner's Dilemma Tournament (6 strategies, Axelrod-style, noise analysis)
+          3. **Challenge:** Cyber Attacker-Defender Game (zero-sum bimatrix, NE via linprog, Stackelberg extension)
+
+          ## Toolbox
+          - Primary tools: NumPy, SciPy (linprog for zero-sum NE), SymPy, matplotlib
+          - Output format: MkDocs-compatible Markdown with admonitions, fenced code blocks, KaTeX math
+          - All code must run with Python 3.10+ and only open-source packages"
