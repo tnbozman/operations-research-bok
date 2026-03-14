@@ -27,6 +27,7 @@ theme:
     - search.suggest
     - search.highlight
     - content.code.copy
+    - navigation.indexes
 
 markdown_extensions:
   - admonition
@@ -57,36 +58,37 @@ extra_css:
 nav:
   - Home: index.md
   - OR Techniques:
+    - techniques/index.md
     - Prompt Template: techniques/prompt-template.md
     - Linear Programming:
-      - Overview: techniques/linear-programming/index.md
+      - techniques/linear-programming/index.md
       - Agent Prompt: techniques/linear-programming/prompt.md
     - Integer Programming:
-      - Overview: techniques/integer-programming/index.md
+      - techniques/integer-programming/index.md
       - Agent Prompt: techniques/integer-programming/prompt.md
     - Network Analysis:
-      - Overview: techniques/network-analysis/index.md
+      - techniques/network-analysis/index.md
       - Agent Prompt: techniques/network-analysis/prompt.md
     - Simulation:
-      - Overview: techniques/simulation/index.md
+      - techniques/simulation/index.md
       - Agent Prompt: techniques/simulation/prompt.md
     - Queueing Theory:
-      - Overview: techniques/queueing-theory/index.md
+      - techniques/queueing-theory/index.md
       - Agent Prompt: techniques/queueing-theory/prompt.md
     - Decision Analysis:
-      - Overview: techniques/decision-analysis/index.md
+      - techniques/decision-analysis/index.md
       - Agent Prompt: techniques/decision-analysis/prompt.md
     - Game Theory:
-      - Overview: techniques/game-theory/index.md
+      - techniques/game-theory/index.md
       - Agent Prompt: techniques/game-theory/prompt.md
     - Heuristics & Metaheuristics:
-      - Overview: techniques/heuristics-metaheuristics/index.md
+      - techniques/heuristics-metaheuristics/index.md
       - Agent Prompt: techniques/heuristics-metaheuristics/prompt.md
     - Stochastic Processes:
-      - Overview: techniques/stochastic-processes/index.md
+      - techniques/stochastic-processes/index.md
       - Agent Prompt: techniques/stochastic-processes/prompt.md
   - Military Operations:
-    - Overview: military-operations/overview.md
+    - military-operations/overview.md
     - Army Operations: military-operations/army-operations.md
     - Navy Operations: military-operations/navy-operations.md
     - Air Operations: military-operations/air-operations.md
