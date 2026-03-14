@@ -1,0 +1,7 @@
+/* Custom styles for Operations Research BoK */
+
+/* Ensure math blocks don't overflow on small screens */
+.MathJax {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
